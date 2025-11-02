@@ -23,11 +23,15 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import "./App.css";
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL ||  "http://localhost:54321";
-const SUPABASE_ANON = import.meta.env.VITE_SUPABASE_ANON || "REPLACE_WITH_SUPABASE_ANON";
 
-const supabase: SupabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON);
 
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error("Missing Supabase environment variables");
+}
+const supabase: SupabaseClient = createClient(supabaseUrl, supabaseAnonKey);
 const defaultVoiceQuality = [
   { name: "00:00", quality: 72 },
   { name: "04:00", quality: 75 },
