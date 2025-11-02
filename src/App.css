@@ -1,42 +1,79 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Global layout */
+.app-container {
+  min-height: 100vh;
+  background-color: #0d0f12;
+  color: #e2e8f0;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Step Navigation */
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #888;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.steps .active {
+  color: #0ef4b6;
+  font-weight: 600;
+}
+
+/* Header text */
+.title {
+  font-size: 28px;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #b0b0b0;
+  margin-bottom: 50px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Card container */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
+/* Card styling */
 .card {
-  padding: 2em;
+  background-color: #171b20;
+  border-radius: 16px;
+  width: 320px;
+  padding: 32px;
+  box-shadow: 0 0 12px rgba(14, 244, 182, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 24px rgba(14, 244, 182, 0.2);
+}
+
+/* Card text */
+.card-title {
+  font-size: 26px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.card-title.vapi {
+  color: #0ef4b6;
+}
+
+.card-title.livekit {
+  color: #ffffff;
 }
