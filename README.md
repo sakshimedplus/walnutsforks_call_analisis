@@ -1,73 +1,141 @@
-# React + TypeScript + Vite
+# 🌰 WalnutsForks Call Analysis
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight frontend web application built with **Vite (React)** and powered by **Supabase** for backend services.
+The app demonstrates secure integration between a modern frontend and a managed backend, fully containerized and deployed using **Docker** and **Railway**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+* ⚡ Fast and lightweight frontend built with **Vite + React**
+* 🔐 Supabase authentication and database integration
+* 🐳 Dockerized build for consistent deployment
+* ☁️ Hosted on **Railway.app** with automatic GitHub CI
+* 🌐 Environment configuration via `.env` and Railway variables
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Layer      | Technology                                    |
+| ---------- | --------------------------------------------- |
+| Frontend   | Vite + React (JavaScript/TypeScript optional) |
+| Deployment | Docker + Railway                              |
+| Hosting    | Railway Static Hosting via Nginx              |
+| Styling    | Plain CSS                    |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## ⚙️ Environment Variables
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The following environment variables are required for the project:
+
+| Variable                 | Description                                         |
+| ------------------------ | --------------------------------------------------- |
+| `VITE_SUPABASE_URL`      | Supabase project URL (from your Supabase dashboard) |
+| `VITE_SUPABASE_ANON_KEY` | Supabase anonymous API key                          |
+
+In Railway:
+
+1. Navigate to your project → **Variables**
+2. Add:
+
+   ```
+   VITE_SUPABASE_URL = https://<your-project>.supabase.co
+   VITE_SUPABASE_ANON_KEY = <your-anon-key>
+   ```
+
+---
+
+## 🧩 Local Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/sakshimedplus/walnutsforks_call_analisis.git
+cd walnutsforks_call_analisis
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 3. Add `.env` file
+
+Create a file named `.env` in the project root:
+
+```
+VITE_SUPABASE_URL=https://<your-supabase-url>
+VITE_SUPABASE_ANON_KEY=<your-anon-key>
+```
+
+### 4. Run the development server
+
+```bash
+npm run dev
+```
+
+Then open [http://localhost:5173](http://localhost:5173).
+
+---
+
+## 🐳 Docker Deployment
+
+### Build locally
+
+```bash
+docker build -t walnutsforks-app .
+```
+
+### Run locally
+
+```bash
+docker run -p 8080:80 walnutsforks-app
+```
+
+Then visit [http://localhost:8080](http://localhost:8080).
+
+---
+
+## ☁️ Deployment on Railway
+
+This app is automatically deployed from GitHub → Railway.
+
+* GitHub Repo: [`sakshimedplus/walnutsforks_call_analisis`](https://github.com/sakshimedplus/walnutsforks_call_analisis)
+* Deployed URL: [`https://walnutsforkscallanalisis-production.up.railway.app`](https://walnutsforkscallanalisis-production.up.railway.app)
+
+---
+
+## 🧰 Folder Structure
+
+```
+walnutsforks_call_analisis/
+│
+├── public/                # Static assets
+├── src/                   # Main app source code
+│   ├── components/        # UI components
+│   ├── services/          # Supabase client setup
+│   └── App.jsx            # Root React component
+│
+├── .env.example           # Example env file
+├── Dockerfile             # Docker build setup
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+---
+
+## 🧾 License
+
+This project is licensed under the MIT License — feel free to use and modify for your own projects.
+
+---
+
+## 👩‍💻 Author
+
+**Sakshi Dubey**
+Full Stack Developer
+9697248829
